@@ -3,6 +3,8 @@ A mathematics-first word processor built for students, making it easier to write
 
 ## Milestone 0 feasibility prototype
 
+The newly approved progressive design calls for immediate `/` and `^`, denominator/exponent caret entry, and phantom grouping corrections. Its structural feasibility gate has **not passed**; that behavior is not implemented. The current app retains the delayed-conversion experiment described below. See [the gate results and proposed next experiment](docs/research/progressive-math-typing.md).
+
 This prototype uses React, TypeScript, Vite, Tiptap/ProseMirror, and MathLive. Type prose and compact expressions such as `1/2`, `x^2`, and `(x+1)/2`; Space or Enter converts eligible input to native editable math while writing continues in prose. It also exercises inline/display math, nested fractions, matrix cell navigation, integrated history, and local downloadable backups.
 
 The independent mathematical presentation format has **not** passed feasibility. Backups are explicitly experimental and retain MathLive LaTeX recovery data. See [STATUS.md](STATUS.md) and the [results report](docs/research/milestone-0-results.md) before relying on this for notes.
@@ -69,6 +71,8 @@ The browser suite starts the dev server if needed. It runs real keyboard/pointer
 For a production bundle check, run `npm run build`, start `npm run preview -- --port 4173` in one terminal, then `npm run test:production` in another. The production check uses installed Chromium and writes an ignored screenshot to `.tools/production-smoke.png`.
 
 `npm run probe:math` requires the dev server and installed Microsoft Edge. It prints the pinned MathLive public API's LaTeX, MathML, and offset information for the persistence fixtures.
+
+`npm run probe:progressive` requires the dev server at localhost:5173 and installed Chromium/Firefox/WebKit binaries. It probes public structural ranges, annuity rewrites, empty branches, grouping representations, and a controlled origin-marker alternative in scratch fields. It intentionally returns nonzero while the representation gate is not passed. Diagnostics and a screenshot are written under ignored `.tools`; this command does not modify the open document or change import policy.
 
 ## Scope and limits
 

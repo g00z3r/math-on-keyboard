@@ -3,7 +3,8 @@
 Milestones are hypotheses, not commitments to particular libraries. Validate the editor foundation before investing in broad UI.
 
 ## 0. Repository and editor feasibility
-- **High-priority acceptance gate:** continuous prose/math typing without repeated Insert Math actions. The approved Space/Enter recognizer and shared-history integration are implemented; owner acceptance remains pending. See [typing contract and evidence](docs/research/context-math-typing.md). This is foundation work, not optional polish.
+- **Central acceptance gate:** progressive prose/math typing with immediate `/` and `^`, branch-aware caret entry, reversible phantom grouping corrections, and fidelity after reopen. The public-API experiment did not pass the complete representation gate; implementation stops there under the approved plan. Decide on [ADR 0004's bounded versioned experiment](docs/decisions/0004-progressive-typing-gate.md) before progressive editor integration. See [contract and evidence](docs/research/progressive-math-typing.md).
+- The earlier Space/Enter recognizer and shared-history integration remain the running prototype. Their tests do not establish acceptance of the new progressive requirement.
 - Current evidence: the approved limited prototype is implemented, with automated editing checks passing. The independent mathematical presentation-tree hypothesis failed the placeholder/notation fidelity probes; permanent architecture and format adoption remain pending. See [feasibility results](docs/research/milestone-0-results.md). Milestone 0 is not marked complete.
 - Initialize TypeScript web application with repeatable dev/build/test commands.
 - Compare suitable structured document and math input libraries with a small spike.

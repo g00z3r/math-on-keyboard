@@ -1,5 +1,7 @@
 # Context-sensitive typing contract and evidence
 
+The behavior specified here is the earlier implemented slice. Product requirements are superseded by [the approved progressive typing contract](progressive-math-typing.md). That feature is stopped at its structural feasibility gate; this delayed-conversion implementation remains the current runtime.
+
 Date: 2026-11-10. Approved plan implemented; owner acceptance pending.
 
 ## Interaction contract

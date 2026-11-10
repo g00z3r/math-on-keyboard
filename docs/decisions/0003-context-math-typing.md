@@ -4,6 +4,8 @@ Date: 2026-11-10
 
 Status: Implemented under the owner's approved typing plan. Owner workflow acceptance and permanent architecture adoption remain pending.
 
+Subsequent decision: progressive immediate-entry requirements supersede the delayed-conversion product policy. The existing implementation is retained while [ADR 0004's structural gate](0004-progressive-typing-gate.md) is unresolved. This ADR records the earlier experiment rather than the current intended experience.
+
 ## Context
 
 Requiring explicit Insert Math for each expression conflicts with continuous student note-taking. The owner approved recognition on Space/Enter, including compact compound algebra, with conservative ambiguity handling and explicit structural navigation. The existing independent lossless serialization failure remains a separate gate.

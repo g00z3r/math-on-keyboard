@@ -1,6 +1,6 @@
 # STATUS.md — Implementation State
 
-Status: Approved context-sensitive typing plan implemented and verified with automated tests. Continuous prose/math input is now a Milestone 0 acceptance requirement; the owner typing trial remains pending. Independent lossless math serialization still fails important probes. Milestone 0 is not fully accepted and the permanent architecture/format remain undecided.
+Status: Progressive immediate-entry plan approved; the structural feasibility experiment did not pass the complete representation gate. Immediate slash/power promotion, phantom cues, and scope-correction controls are not implemented. The previous Space/Enter conversion prototype remains the running application. Independent lossless native serialization remains unresolved; Milestone 0 is not accepted.
 
 ## Working and demonstrated
 
@@ -18,6 +18,8 @@ Status: Approved context-sensitive typing plan implemented and verified with aut
 - Dependency lockfile and dev/build/test/typecheck/lint commands; local math fonts and production bundle browser smoke.
 
 ## Failed or partial
+
+- **Progressive typing gate not passed.** Public descriptors recover the tested empty branches, and fixture-specific annuity range rewrites work. But invisible power-base grouping omits necessary visible parentheses; native fenced grouping does not distinguish inferred from explicit fences after reopening. A controlled public origin marker survives the tested edit/reopen but is rejected by current notebook admission. See [gate evidence](docs/research/progressive-math-typing.md) and [the proposed versioned experiment](docs/decisions/0004-progressive-typing-gate.md). This is a limitation of the tested strategy, not proof that every public adapter is impossible.
 
 - **Independent mathematical presentation serialization failed.** MathLive MathML exports editable placeholders as literal question marks, losing identity/branch structure. Empty branches and complete matrix presentation also do not pass the current tree-only round-trip probe.
 - Version-0 files explicitly retain MathLive LaTeX recovery data. They are experimental backups, not the approved canonical notebook format. No fidelity requirement has been relaxed.
@@ -62,6 +64,15 @@ Status: Approved context-sensitive typing plan implemented and verified with aut
 - Added unit and cross-browser typing tests, strengthened real clipboard and production smoke coverage, and updated the app's typing guidance and README.
 - Updated PRODUCT and ROADMAP with continuous typing as a high-priority Milestone 0 acceptance requirement. Recorded [ADR 0003](docs/decisions/0003-context-math-typing.md) and the [typing contract, evidence, and trial checklist](docs/research/context-math-typing.md).
 
+## Progressive typing gate — 2026-11-10
+
+- Added reproducible `npm run probe:progressive`. Chromium, Firefox, and WebKit each passed 13 fixture recovery checks and six public-API capability checks: branch mapping/recovery, fixture numerator contraction/expansion, denominator caret mapping, regrouped recovery, numerator geometry, and literal trigger recovery.
+- The required representation gate **did not pass**, so the command intentionally returns nonzero. No progressive input or phantom UI was added; the application code, dependencies, version-0 format, and admission policy are unchanged.
+- Empty exponent MathML loss, incorrect native display for invisible grouped bases, and identical unannotated explicit/inferred fence representations were reproduced in all three engines. A public `htmlData` origin marker survives the tested interior edit and source recovery/reopen, but version-0 admission rejects it. Arbitrary edits, integrated transformation history, nested marker ownership, clipboard, live cue alignment/reflow, real IME, and owner trials are not established by this experiment.
+- Evidence is in ignored `.tools/progressive-math-report.json` and `.tools/progressive-scope-fixtures.png`; the screenshot was visually inspected. The annuity rewrite is fixture-specific and does not establish a general structural adapter.
+- Updated PRODUCT, ROADMAP, README, and historical-policy notices. Recorded [the progressive contract and evidence](docs/research/progressive-math-typing.md) and [ADR 0004's next-step proposal](docs/decisions/0004-progressive-typing-gate.md).
+- Verification after these changes: typecheck, lint, all **88 existing unit tests**, production build, and whitespace checks passed. Build retains the existing large-chunk warning (~1.385 MB JavaScript / 404 KB gzip). The complete application browser suite and production smoke were not repeated because application code did not change; the new structural experiment ran in all three engines. The experiment is not a substitute for the deferred progressive-input acceptance suite.
+
 ## Previous prototype changes — 2026-11-09
 
 - Implemented the approved limited prototype, regression coverage, and reproducible setup with a lockfile.
@@ -71,4 +82,4 @@ Status: Approved context-sensitive typing plan implemented and verified with aut
 
 ## Recommended next step and decision gate
 
-Run the owner continuous-typing and real IME trials in [the typing checklist](docs/research/context-math-typing.md), then continue the independent public lossless presentation-serialization investigation before broadening into Milestone 1. Keep the editor/format adoption decision open. A private-API fork, new general parser/editor, or compromise to fidelity requires another product-owner decision; none was adopted during this experiment.
+Decide whether to authorize [ADR 0004's bounded, versioned origin-marker experiment](docs/decisions/0004-progressive-typing-gate.md). Re-run the complete structural gate before implementing progressive input. Continue the independent lossless native-format investigation, and retain owner/real-IME trials as acceptance requirements. A private-API fork, editor replacement, new general parser, or fidelity compromise requires a separate decision.
