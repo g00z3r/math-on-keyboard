@@ -3,7 +3,7 @@ A mathematics-first word processor built for students, making it easier to write
 
 ## Milestone 0 feasibility prototype
 
-This prototype uses React, TypeScript, Vite, Tiptap/ProseMirror, and MathLive. It exercises continuous prose, inline/display math, nested fractions, matrix cell navigation, integrated history, and local downloadable backups.
+This prototype uses React, TypeScript, Vite, Tiptap/ProseMirror, and MathLive. Type prose and compact expressions such as `1/2`, `x^2`, and `(x+1)/2`; Space or Enter converts eligible input to native editable math while writing continues in prose. It also exercises inline/display math, nested fractions, matrix cell navigation, integrated history, and local downloadable backups.
 
 The independent mathematical presentation format has **not** passed feasibility. Backups are explicitly experimental and retain MathLive LaTeX recovery data. See [STATUS.md](STATUS.md) and the [results report](docs/research/milestone-0-results.md) before relying on this for notes.
 
@@ -30,8 +30,8 @@ That local runtime is not committed or required on machines with a supported Nod
 
 ## Try the editing workflow
 
-1. Click the document and type `Let `.
-2. Insert **Fraction**, type `1`, press Down, and type `2`. Escape returns to prose; continue typing.
+1. Click the document and type `The answer is 1/2 because...`. Space after `1/2` creates an editable stacked fraction and keeps the caret in prose. No insertion button is needed.
+2. Try `x/2 `, `x^2 `, `(x+1)/2 `, and `a/(b/c) `. Undo once immediately after conversion restores the literal expression and its Space or paragraph break; Redo restores math. Enter a fraction with the mouse or arrows to edit its branches. Space inside math inserts a thin space in the current branch; use arrows or Escape to leave it. Explicit **Fraction** insertion remains available for unfinished structures.
 3. Insert **Display math** and type an expression such as `x^2`. Home/End move to math-field boundaries; arrows enter and leave math. Ctrl+Home / Ctrl+End move to document boundaries from prose.
 4. Insert a **2 × 2 matrix**. Type into cells with Tab / Shift+Tab and arrows. Fractions can be inserted inside a cell using **Fraction** or Ctrl+Alt+F.
 5. Drag the small bottom-right matrix boundary handle: approximately 40 pixels horizontally changes one column and 32 pixels vertically changes one row. Dimensions preview before release. The prototype supports 1–8 rows and columns for a standalone matrix. Shrinking nonempty cells requires confirmation. Focus the handle and use arrows for keyboard resizing.
@@ -41,6 +41,8 @@ That local runtime is not committed or required on machines with a supported Nod
 Ctrl+Alt+M inserts inline math, Ctrl+Alt+F a fraction, Ctrl+Alt+D display math, and Ctrl+Alt+X a matrix. Buttons are available when keyboard layout or browser shortcuts conflict. Greek symbols can be deliberately entered through LaTeX, for example pasting `\alpha` inside math. Ordinary `x` stays `x`; there is no evaluation or implicit variable binding.
 
 Paste supported LaTeX inside a math field. Paste in prose stays prose. Same-app document copy/paste preserves mixed math and text through a native fragment carried alongside HTML/plain-text fallbacks. External mathematical HTML/MathML import is not implemented; unsupported conversions are reported. Native file import validates before replacing the current document.
+
+Recognition is deliberately conservative: `and/or`, `km/h`, `file/name`, `n/a`, recognizable dates/paths, incomplete expressions, and spaced `x + 1` stay literal. Use parentheses for ambiguous `a/b/c`, `1/2x`, and `x^2^3`. An isolated `1/2` is treated as a fraction even if you intended a date: Undo restores literal input, and deleting/retyping its boundary does not reconvert until the expression changes. Pasted, imported, composition-produced, or selection-replaced text needs a subsequent direct expression edit before recognition. See the complete [typing contract and trial checklist](docs/research/context-math-typing.md).
 
 Open **Feasibility diagnostics** to inspect the experimental document and run the actual presentation-tree restoration probe. A successful recovery backup does not imply that tree-only restoration passed.
 

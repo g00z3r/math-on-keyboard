@@ -2,6 +2,8 @@
 
 Date: 2026-11-09. Prototype implemented; permanent architecture adoption remains pending.
 
+Follow-up, 2026-11-10: the owner identified continuous prose/math typing as a high-priority acceptance requirement. The approved Space/Enter recognition layer is implemented; see [the typing contract and subsequent evidence](context-math-typing.md). The results below describe the original prototype; the lossless-format failure remains unresolved and Milestone 0 is not accepted.
+
 ## Result
 
 React + TypeScript + Vite + Tiptap/ProseMirror + MathLive can demonstrate the approved minimal editing slice with coordinated history and focus. The attempted library-independent presentation-tree persistence route does **not** meet the lossless requirement. Do not proceed as though a permanent native format has been validated.

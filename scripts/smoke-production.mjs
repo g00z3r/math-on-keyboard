@@ -13,16 +13,17 @@ try {
   page.on('request', request => { if (/^https?:/.test(request.url()) && new URL(request.url()).origin !== 'http://127.0.0.1:4173') remote.push(request.url()); });
   await page.goto('http://127.0.0.1:4173');
   const prose = page.getByRole('textbox', { name: 'Notebook document' });
-  await prose.click(); await page.keyboard.type('Let ');
-  await page.getByRole('button', { name: 'Fraction', exact: true }).click();
-  await page.keyboard.type('1'); await page.keyboard.press('ArrowDown'); await page.keyboard.type('2');
-  await page.keyboard.press('Escape'); await page.keyboard.type(' be an editable fraction.');
+  await prose.click(); await page.keyboard.type('The answer is 1/2 because it is an editable fraction.');
+  assert.equal(await prose.evaluate(el => document.activeElement === el), true);
   await page.getByRole('button', { name: '2 × 2 matrix', exact: true }).click();
   await page.keyboard.type('1'); await page.keyboard.press('Tab'); await page.keyboard.type('x');
   await page.keyboard.press('Tab'); await page.keyboard.type('3'); await page.keyboard.press('Tab'); await page.keyboard.type('4');
   await page.evaluate(() => document.fonts.ready);
   assert.equal(await page.locator('math-field').count(), 2);
-  assert.match(await page.locator('math-field').first().evaluate(el => el.value), /\\frac12/);
+  assert.deepEqual(await page.locator('math-field').first().evaluate(el => {
+    const xml = new window.DOMParser().parseFromString(`<math>${el.getValue('math-ml')}</math>`, 'application/xml');
+    return [...xml.querySelector('mfrac').children].map(child => child.textContent);
+  }), ['1', '2']);
   assert.match(await page.locator('math-field').last().evaluate(el => el.value), /bmatrix/);
   assert.deepEqual(errors, []);
   assert.deepEqual(remote, []);

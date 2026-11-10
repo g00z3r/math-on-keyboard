@@ -14,6 +14,9 @@ export function configureMathfield(mf: MathfieldElement, inline = false) {
   mf.mathVirtualKeyboardPolicy = 'manual';
   mf.popoverPolicy = 'off';
   mf.smartFence = false;
+  mf.smartMode = false;
+  // MathLive otherwise treats Space as moveAfterParent. Structure exits are explicit.
+  mf.mathModeSpace = '\\,';
   mf.removeExtraneousParentheses = false;
   const mountedOptions = () => { mf.inlineShortcuts = {}; mf.menuItems = []; };
   if (mf.isConnected) mountedOptions();

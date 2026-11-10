@@ -9,6 +9,7 @@ import { captureMath, validateRecovery, withProbe } from '../math/adapter';
 import { MathSelection } from './math-selection';
 import { fromNotebook, toNotebook } from './document-adapter';
 import { MathNodeView, type MathBridge } from './math-node-view';
+import { mathTypingPlugin } from './math-typing';
 
 const clipboardType = 'application/x-math-on-keyboard';
 const Document = Node.create({ name: 'doc', topNode: true, content: 'block+' });
@@ -67,14 +68,14 @@ export function createEditor(element: HTMLElement, report: (message: string) => 
         const notebook = parseNotebook(JSON.stringify(value.notebook)); validateBook(notebook);
         if (![value.openStart, value.openEnd].every(depth => Number.isInteger(depth) && depth >= 0 && depth <= 1)) throw new Error('Invalid clipboard boundary.');
         const doc = fromNotebook(notebook, editor.schema, true);
-        editor.view.dispatch(closeHistory(editor.state.tr.replaceSelection(new Slice(doc.content, value.openStart, value.openEnd))).scrollIntoView());
+        editor.view.dispatch(closeHistory(editor.state.tr.replaceSelection(new Slice(doc.content, value.openStart, value.openEnd))).setMeta('uiEvent', 'paste').scrollIntoView());
       } else {
         if (/<math\b|data-equation/i.test(html)) throw new Error('External mathematical HTML is not supported yet. Paste LaTeX inside a math field.');
         const text = event.clipboardData?.getData('text/plain') ?? '';
         if (text.length > 100_000) throw new Error('Paste exceeds the prototype limit.');
         if (!text) return true;
         const paragraphs = text.replaceAll('\r\n', '\n').split('\n').map(line => editor.schema.nodes.paragraph.create(null, line ? editor.schema.text(line) : null));
-        editor.view.dispatch(closeHistory(editor.state.tr.replaceSelection(new Slice(Fragment.fromArray(paragraphs), 1, 1))).scrollIntoView());
+        editor.view.dispatch(closeHistory(editor.state.tr.replaceSelection(new Slice(Fragment.fromArray(paragraphs), 1, 1))).setMeta('uiEvent', 'paste').scrollIntoView());
       }
       editor.view.dispatch(closeHistory(editor.state.tr).setMeta('addToHistory', false));
     } catch (error) { report((error as Error).message); }
@@ -129,6 +130,15 @@ export function createEditor(element: HTMLElement, report: (message: string) => 
             beforeinput: (_view, event) => { if (event.inputType !== 'historyUndo' && event.inputType !== 'historyRedo') return false; event.preventDefault(); bridge.history(event.inputType === 'historyRedo'); return true; },
           },
         } }),
+        mathTypingPlugin(latex => {
+          const math = withProbe(mf => {
+            mf.setValue(latex, { silenceNotifications: true });
+            if (mf.errors.length) throw new Error('Unsupported typed mathematics');
+            return captureMath(mf);
+          });
+          validateRecovery(math);
+          return math;
+        }),
         keymap(baseKeymap),
       ];
     },

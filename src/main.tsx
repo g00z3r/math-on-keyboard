@@ -12,7 +12,7 @@ function App() {
   const host = useRef<HTMLDivElement>(null);
   const controller = useRef<NotebookEditor | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
-  const [message, setMessage] = useState('Ready. Write prose, then insert mathematics.');
+  const [message, setMessage] = useState('Ready. Type prose and expressions such as 1/2 or x^2; Space or Enter formats eligible math.');
   const [revision, setRevision] = useState(0);
   const [checks, setChecks] = useState<string[]>([]);
   const changed = useRef(false);
@@ -85,7 +85,7 @@ function App() {
       <button onClick={() => fileInput.current?.click()}>Open backup</button>
       <input ref={fileInput} hidden type="file" accept=".json" onChange={event => void open(event.target.files?.[0])} aria-label="Open notebook file" />
     </div>
-    <p className="instructions">Arrows move through math and back to prose. Tab / Shift+Tab move between matrix cells. Escape leaves math; Enter continues writing. Drag the matrix’s bottom-right boundary handle to change its rows and columns.</p>
+    <p className="instructions">Type expressions such as 1/2, x^2, or (x+1)/2, then Space or Enter to format them and continue prose. Undo restores literal typing. Arrows move through math and back to prose; Escape leaves math. Tab / Shift+Tab move between matrix cells. Drag the matrix’s bottom-right boundary handle to change its rows and columns.</p>
     <div ref={host} className="document" />
     <p role="status" className="status">{message}</p>
     <aside>Experimental backups retain MathLive source. Independent mathematical serialization has failed the placeholder probe and is still under investigation. Download a backup before closing.</aside>

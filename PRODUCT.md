@@ -13,6 +13,8 @@ Build a mathematics-first word processor for students who currently switch betwe
 
 ## Core interaction requirements
 - Normal prose, inline math, and display math coexist in a flowing document with ordinary reflow.
+- **Continuous prose/math typing is a high-priority foundation requirement.** A student can type `The answer is 1/2 because...` and obtain a native editable stacked fraction without Insert Math or a conscious editing-mode switch. Eligible compact expressions convert on Space or Enter while the caret continues in prose; immediate Undo restores literal typing. Recognition must protect ordinary English, dates, and paths, and never evaluate input. The approved initial behavior is recorded in [the typing contract](docs/research/context-math-typing.md).
+- Once a student enters a fraction, structural navigation is explicit. Letters and spaces remain in the current branch; arrows and explicit exit commands navigate. Space within math inserts a thin mathematical space rather than leaving a denominator.
 - Desmos-like mathematical input for fractions, powers, roots, Greek symbols, and matrices; nested cursor navigation is deliberate and predictable.
 - A matrix is a native editable grid: each cell supports mathematical expressions; Tab/Shift+Tab and arrows navigate; the number of rows and columns can be changed by directly manipulating the matrix boundary, with safeguards against silent loss. Resizing refers to row/column counts, not visual cell widths or heights.
 - A contextual matrix menu can offer transpose, determinant, row operations, RREF, inverse, and later eigen-related tools. Computed results appear as previews and can be inserted as editable content.
@@ -28,7 +30,7 @@ Build a mathematics-first word processor for students who currently switch betwe
 - Browser-based desktop-first release, designed so a future desktop wrapper and touch-oriented UI remain feasible.
 
 ## Initial success criterion
-The product owner chooses to take actual mathematics notes in this app instead of Goodnotes. An early demonstration should let a student type prose, insert/edit fractions and matrices, navigate between structures, save and reopen without loss, and export readable mathematics.
+The product owner chooses to take actual mathematics notes in this app instead of Goodnotes. An early demonstration must let a student continuously type prose and native mathematical expressions without repeated insertion actions, edit fractions and matrices, navigate between structures, save and reopen without loss, and export readable mathematics.
 
 ## Explicit non-goals for the first prototype
 Cloud accounts/sync, collaboration, advanced CAS, 3D visualizations, elaborate notebook templates, full editable PDF import, and a mobile-first interface.

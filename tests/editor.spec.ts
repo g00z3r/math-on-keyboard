@@ -128,10 +128,7 @@ test('native system clipboard preserves mixed content and regenerates equation i
   await page.context().grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.evaluate(() => navigator.clipboard.writeText(''));
   const prose = page.getByRole('textbox', { name: 'Notebook document' });
-  await prose.click(); await page.keyboard.type('A ');
-  await page.getByRole('button', { name: 'Fraction', exact: true }).click();
-  await page.keyboard.type('1'); await page.keyboard.press('ArrowDown'); await page.keyboard.type('2');
-  await page.keyboard.press('Escape'); await page.keyboard.type(' B');
+  await prose.click(); await page.keyboard.type('A 1/2 B');
   await page.keyboard.press('Control+a'); await page.keyboard.press('Control+c');
   await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toContain('\\frac');
   await page.keyboard.press('ArrowRight'); await page.keyboard.press('Control+v');
