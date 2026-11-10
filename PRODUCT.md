@@ -14,7 +14,7 @@ Build a mathematics-first word processor for students who currently switch betwe
 ## Core interaction requirements
 - Normal prose, inline math, and display math coexist in a flowing document with ordinary reflow.
 - Desmos-like mathematical input for fractions, powers, roots, Greek symbols, and matrices; nested cursor navigation is deliberate and predictable.
-- A matrix is a native editable grid: each cell supports mathematical expressions; Tab/Shift+Tab and arrows navigate; rows/columns can be resized with direct manipulation, with safeguards against silent loss.
+- A matrix is a native editable grid: each cell supports mathematical expressions; Tab/Shift+Tab and arrows navigate; the number of rows and columns can be changed by directly manipulating the matrix boundary, with safeguards against silent loss. Resizing refers to row/column counts, not visual cell widths or heights.
 - A contextual matrix menu can offer transpose, determinant, row operations, RREF, inverse, and later eigen-related tools. Computed results appear as previews and can be inserted as editable content.
 - Do not require typed comma/semicolon matrix syntax as the primary creation workflow.
 - No unsolicited variable definitions or overactive autocomplete. Ordinary `x` must not become Greek chi.

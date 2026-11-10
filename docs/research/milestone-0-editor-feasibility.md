@@ -2,6 +2,8 @@
 
 Date: 2026-11-09. Status: research and proposal only; no application or prototype implemented.
 
+Historical research-phase proposal. The owner subsequently approved the limited experiment; current implementation evidence and the failed serialization gate are recorded in [Milestone 0 results](milestone-0-results.md).
+
 AGENTS.md, PRODUCT.md, ROADMAP.md, and STATUS.md were read in full. The repository contains specifications and a README, with no application, package manifest, or test harness. The owner's instruction to present tradeoffs before implementation takes precedence over immediately scaffolding the application in roadmap milestone 0.
 
 ## Recommendation

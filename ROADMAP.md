@@ -3,6 +3,7 @@
 Milestones are hypotheses, not commitments to particular libraries. Validate the editor foundation before investing in broad UI.
 
 ## 0. Repository and editor feasibility
+- Current evidence: the approved limited prototype is implemented, with automated editing checks passing. The independent mathematical presentation-tree hypothesis failed the placeholder/notation fidelity probes; permanent architecture and format adoption remain pending. See [feasibility results](docs/research/milestone-0-results.md). Milestone 0 is not marked complete.
 - Initialize TypeScript web application with repeatable dev/build/test commands.
 - Compare suitable structured document and math input libraries with a small spike.
 - Demonstrate prose → inline fraction → prose, display math, and a 2×2 editable matrix within the same flowing document.

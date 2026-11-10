@@ -2,7 +2,13 @@
 
 Date: 2026-11-09
 
-Status: Proposed; awaiting product-owner approval. Not an accepted architecture.
+Status: Limited feasibility experiment approved by the product owner on 2026-11-09 and implemented. Permanent editor architecture and file format remain unapproved.
+
+## Approval conditions and outcome
+
+The owner accepted whole-equation selection provisionally, clarified that boundary dragging changes matrix row/column counts, and authorized investigation of the presentation tree without approving it as a permanent format. Integrated history, navigation, and persistence were the priorities; computation, broad menus, cloud features, and visual polish were excluded.
+
+The [results report](../research/milestone-0-results.md) records the observed passing editing checks and the failed independent-serialization gate. [ADR 0002](0002-experimental-math-bridge.md) describes the implemented experiment. The approval did not settle the permanent selection policy or authorize weakening lossless native persistence.
 
 ## Context
 
