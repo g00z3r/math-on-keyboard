@@ -74,6 +74,8 @@ For a production bundle check, run `npm run build`, start `npm run preview -- --
 
 `npm run probe:progressive` requires the dev server at localhost:5173 and installed Chromium/Firefox/WebKit binaries. It probes public structural ranges, annuity rewrites, empty branches, grouping representations, and a controlled origin-marker alternative in scratch fields. It intentionally returns nonzero while the representation gate is not passed. Diagnostics and a screenshot are written under ignored `.tools`; this command does not modify the open document or change import policy.
 
+`npm run probe:origin-groups` runs the owner-approved bounded version-1 experiment against all three engines with the same server/browser setup. It tests strict marker ownership, nested/empty structures, structural edits, fixture scope rewrites, shared history, clipboard, and actual file download/reload/reopening. The gate currently fails on fence-boundary edits and default clipboard metadata exclusion, so the command intentionally returns nonzero. Evidence is written to `.tools/origin-group-report.json` and `.tools/origin-group-fixtures.png`; see [results and remaining blockers](docs/research/origin-group-experiment.md). The isolated version-1 reader/writer is available only to this investigation. The running application's format, admission, save, and paste behavior remain version 0.
+
 ## Scope and limits
 
 The current format is `math-on-keyboard-experiment`, version `0`, with the pinned `mathlive-0.111.4` recovery adapter. It is not the permanent notebook format. Unknown versions/fields are rejected rather than silently discarded. Files are limited to 2 MB in this spike.

@@ -2,7 +2,7 @@
 
 Date: 2026-11-10
 
-Status: Gate investigated; not passed. Proposed versioned experiment awaits owner approval. Application behavior and admission policy are unchanged.
+Status: Owner approved the bounded versioned experiment on 2026-11-10. Experiment executed; complete structural gate not passed. Application behavior and version-0 admission remain unchanged. See [ADR 0005](0005-origin-marker-experiment-results.md).
 
 ## Evidence and consequence
 
@@ -14,7 +14,7 @@ Stop before application integration as the approved plan requires. Do not ship a
 
 ## Recommended next decision: bounded origin-marker experiment
 
-Authorize an experimental version-1 backup/admission representation, retaining the current pinned MathLive adapter and ProseMirror document/history foundation. This is not adoption of a canonical native format or permission to loosen arbitrary active-content admission.
+The owner authorized an experimental version-1 backup/admission representation, retaining the current pinned MathLive adapter and ProseMirror document/history foundation. This is not adoption of a canonical native format or permission to loosen arbitrary active-content admission. The proposal below records the approved bounds; results are in [the experiment report](../research/origin-group-experiment.md).
 
 Proposed scope:
 
@@ -33,4 +33,4 @@ A scratch marker survived one interior edit and pinned recovery/reopen in Chromi
 - Evaluate another maintained math editor against the same acceptance corpus. Do not change the editor foundation without a separate decision.
 - Approve a broader versioned structural model experiment. It must reuse maintained parsing/editing facilities and demonstrate lossless presentation/unfinished-state fidelity; a new handwritten rich-text engine or general LaTeX parser is outside this proposal.
 
-The origin-marker experiment is recommended because it has a concrete public-API proof point and a smaller change surface than replacing the editor. It still needs explicit approval under the plan's versioned-model gate and repository architecture rules.
+The origin-marker experiment was selected because it had a concrete public-API proof point and a smaller change surface than replacing the editor. Owner authorization covers only this bounded investigation. Further consequential architecture or editing-policy changes require a separate decision.

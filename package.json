@@ -15,6 +15,7 @@
     "test:production": "node scripts/smoke-production.mjs",
     "probe:math": "node scripts/probe-mathlive.mjs",
     "probe:progressive": "node scripts/probe-progressive-math.mjs",
+    "probe:origin-groups": "node scripts/probe-origin-groups.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint ."
   },

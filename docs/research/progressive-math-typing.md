@@ -4,6 +4,8 @@ Date: 2026-11-10
 
 Status: Product behavior approved. Structural experiment completed; the complete gate did not pass. Immediate typing, phantom cues, and regrouping controls are not implemented in the application. The running prototype retains the earlier delayed-conversion slice.
 
+Follow-up: the owner approved the bounded version-1 origin-marker experiment. It was executed in Chromium, Firefox, and WebKit and **also did not pass the complete structural gate**. See [the new evidence and limitations](origin-group-experiment.md) and [ADR 0005](../decisions/0005-origin-marker-experiment-results.md). The original unannotated experiment below remains historical evidence; it is not the version-1 gate.
+
 ## Approved interaction contract
 
 Helpful automatic transformations take priority over avoiding every ambiguous guess. Reversibility must preserve typed content.
